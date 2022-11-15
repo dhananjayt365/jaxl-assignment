@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+<script>
+    (async () =>{
+        const user = await axios.get('/user');
+        console.log(user);
+        if(user.status==200){
+            document.querySelector('#name').innerText = user.data.name;
+            document.querySelector('#email').innerText = user.data.email;
+        }
+    })()
+</script>
+<body>
+    <h1 id="email">email</h1>
+    <h1 id="name">name</h1>
+    <form action="/logout">
+        <button type="submit">logout</button>
+    </form>
+</body>
+</html>
